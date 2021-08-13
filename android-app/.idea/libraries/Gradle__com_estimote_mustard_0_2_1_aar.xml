@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.estimote:mustard:0.2.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d6daab94a40f4d099729881771ee7c5/jetified-mustard-0.2.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d6daab94a40f4d099729881771ee7c5/jetified-mustard-0.2.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5d6daab94a40f4d099729881771ee7c5/jetified-mustard-0.2.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b19f80b11d42dd622efa809d87b1ba1f/jetified-mustard-0.2.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b19f80b11d42dd622efa809d87b1ba1f/jetified-mustard-0.2.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b19f80b11d42dd622efa809d87b1ba1f/jetified-mustard-0.2.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.estimote/mustard/0.2.1/abe2f331ee876dce1d438e39363a6e165a2c75f9/mustard-0.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

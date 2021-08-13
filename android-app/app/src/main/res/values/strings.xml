@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BeaconExample</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="login_btn_text">iniciar sesión</string>
+    <string name="login_btn_loading_text">cargando...</string>
+
+    <string name="login_title">¿Beacons?</string>
+    <string name="login_subtitle">Bienvenido amigo.\n¡Ya te extrañábamos!</string>
+
+    <string name="request_help_btn_text">solicitar ayuda</string>
+    <string name="cancel_help_btn_text">cancelar ayuda</string>
+    <string name="finish_help_btn_text">finalizar ayuda</string>
+
+    <string name="greetings">Hola %s</string>
+</resources>

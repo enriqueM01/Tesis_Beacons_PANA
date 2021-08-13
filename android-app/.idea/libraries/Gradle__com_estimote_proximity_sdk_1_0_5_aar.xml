@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.estimote:proximity-sdk:1.0.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3edf6438c337f20cfce224763f1683ec/jetified-proximity-sdk-1.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3edf6438c337f20cfce224763f1683ec/jetified-proximity-sdk-1.0.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3edf6438c337f20cfce224763f1683ec/jetified-proximity-sdk-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b58548a8120645193d383317b4f506f1/jetified-proximity-sdk-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b58548a8120645193d383317b4f506f1/jetified-proximity-sdk-1.0.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b58548a8120645193d383317b4f506f1/jetified-proximity-sdk-1.0.5/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.estimote/proximity-sdk/1.0.5/293b0052affde4425e6c98bbf5c967b510816689/proximity-sdk-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
