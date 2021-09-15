@@ -1,5 +1,6 @@
 package com.example.prototipobeacons.activities
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -12,24 +13,30 @@ import com.example.prototipobeacons.UserRequest
 import com.example.prototipobeacons.UserResponse
 import com.example.prototipobeacons.api.Api
 import com.example.prototipobeacons.api.RetrofitClientInstance
+import com.example.prototipobeacons.databinding.ActivityLoginBinding
+import com.example.prototipobeacons.databinding.ActivityRequestHelpBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class Login : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
     val gson = Gson()
     val callback = object : Callback<UserResponse> {
         override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-            val errorMessageText = findViewById<TextView>(R.id.login_error_msg)
 
             when (response.code()) {
                 200 -> {
                     Log.i(TAG, "access token: ${response.body()?.accessToken}")
+                    val intent = Intent(this@Login,RequestHelpActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                 401 -> {
-                    Log.i(TAG, "Credenciales invalidas")
-                    errorMessageText.text = "Credenciales inválidas"
+                    Snackbar.make(binding.loginButton,"Credenciales inválidas", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
                 }
             }
         }
@@ -46,12 +53,11 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        initAction()
-    }
 
-    fun initAction() {
-        val btn_login = findViewById<Button>(R.id.button)
-        btn_login.setOnClickListener {
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.loginButton.setOnClickListener {
             login()
         }
     }
@@ -66,32 +72,7 @@ class Login : AppCompatActivity() {
 
         val retro = RetrofitClientInstance().getRetrofitClientInstance().create(Api::class.java)
         retro.login(request).enqueue(callback)
-        /*
-        retro.login(request).enqueue(object : Callback<UserResponse> {
-            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                Log.i("[LoginResponse]", gson.toJson(response))
 
-                val user = response.body()
-                user!!.data?.token?.let { Log.e("token", it) }
-                user.data?.email?.let { Log.e("email", it) }
-               if (response.code() == 200) {
-                    Toast.makeText(this@Login, "Autenticación Exitosa!", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@Login, "Autenticación Fallida!", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                Log.i("[LoginResponse]", gson.toJson(t))
-                t.message?.let { Log.e("Error", it) }
-                Toast.makeText(
-                    this@Login,
-                    t.message,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
-         */
     }
 }
 

@@ -131,7 +131,7 @@
 
 
         <Button
-            android:id="@+id/login_buttom"
+            android:id="@+id/login_button"
             style="@style/main_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
@@ -140,12 +140,6 @@
             android:text="INICIAR SESIÓN"
             android:textColor="@color/white"
             android:textCursorDrawable="@null" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
     </LinearLayout>
 
 

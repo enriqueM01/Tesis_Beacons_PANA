@@ -12,4 +12,8 @@ class UserResponse {
     @SerializedName("message")
     @Expose
     var message: String? = null
+
+    @SerializedName("name")
+    @Expose
+    var name: String? = null
 }
