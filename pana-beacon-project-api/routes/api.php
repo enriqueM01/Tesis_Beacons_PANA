@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ZonaBeaconController;
 
 Route::post('/tokens/create', function (Request $request) {
@@ -19,14 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/me', [AuthController::class, 'me']);
 
-Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
-
-Route::middleware('auth:sanctum')->post('/evento', [ZonaBeaconController::class, 'evento']);
-
-
-/*Route::post('foo/bar', function()
-{
-    return 'Hello World';
-});*/
+Route::middleware(['auth:sanctum'])->group(function (){
+    
+    Route::post('/me', [AuthController::class, 'me']);
+    Route::post('/evento', [ZonaBeaconController::class, 'evento']);
+    Route::post('/inicioservicio', [ServiceController::class, 'inicioservicio']);
+    Route::post('/finservicio', [ServiceController::class, 'finservicio']);
+    Route::post('/ayuda', [ServiceController::class, 'ayuda']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+});

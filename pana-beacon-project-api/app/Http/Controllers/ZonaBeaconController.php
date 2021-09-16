@@ -10,11 +10,13 @@ class ZonaBeaconController extends Controller
 {
     public function evento(Request $request)
     {
-        Log::info("$request->zona");
+        $user = $request->user();
+        $hora = $request['hora'];
+
+        Log::info("El usuario $user->name está: {$request['evento']}. hora de registro en App $hora");
 
         return response()->json([
-            'message' => "todo OK",
-
+            'message' => "Evento registrado"
         ]);
     }
 }

@@ -27,7 +27,7 @@ class AuthController extends Controller
                    'password' => Hash::make($validatedData['password']),
        ]);
 
-    $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
               'access_token' => $token,
@@ -35,31 +35,44 @@ class AuthController extends Controller
         ]);
 }
 
-public function login(Request $request)
-{
-    if (!Auth::attempt($request->only('email', 'password'))) {
-        return response()->json([
+    public function login(Request $request)
+    {
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json([
             'message' => 'Invalid login details'
-        ], 401);
-    }
+            ], 401);
+        }
 
-    $user = User::where('email', $request['email'])->firstOrFail();
+        $user = User::where('email', $request['email'])->firstOrFail();
 
-    $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-    Log::info("$user->name inició sesión");
+        Log::info("$user->name inició sesión");
 
-return response()->json([
+        return response()->json([
            'access_token' => $token,
            'token_type' => 'Bearer',
-]);
-}
-// app/Http/Controllers/AuthController.php
+           'message' => "Inicio de sesión registrado"
+        ]);
+    }
 
-public function me(Request $request)
-{
-return $request->user();
-}
 
+    public function me(Request $request)
+    {   
+        return $request->user();
+    }
+
+
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+        $hora = $request['hora'];
+
+        Log::info("$user->name ha cerrado sesión. Hora registro en App $hora");
+
+        return response()->json([
+            'message' => "Cierre de sesión registrado"
+        ]);
+    }
 
 }
