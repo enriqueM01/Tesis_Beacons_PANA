@@ -13,4 +13,8 @@ object LocalStorage {
     var accessToken: String
         get() = preferences!!.getString("accessToken", "")!!
         set(value) = preferences!!.edit().putString("accessToken", value).apply()
+
+    var name: String
+        get() = preferences!!.getString("name", "")!!
+        set(value) = preferences!!.edit().putString("name", value).apply()
 }

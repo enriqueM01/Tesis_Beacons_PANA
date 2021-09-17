@@ -35,7 +35,7 @@ class Login : AppCompatActivity() {
                 200 -> {
                     Log.i("[access token aaaa]", response.body()?.accessToken!!)
                     LocalStorage.accessToken = response.body()?.accessToken!!
-
+                    LocalStorage.name = response.body()?.name!!
 
                     val intent = Intent(this@Login,RequestHelpActivity::class.java)
                     startActivity(intent)

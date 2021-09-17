@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.Log
 
 class BeaconApplication: Application(){
-
     companion object {
         lateinit  var appContext: Context
     }
