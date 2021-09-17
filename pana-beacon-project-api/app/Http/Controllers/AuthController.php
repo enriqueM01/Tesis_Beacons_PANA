@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 class AuthController extends Controller
 {
     
-    // app/Http/Controllers/AuthController.php
+
     
     public function register(Request $request)
     {   
@@ -47,7 +47,9 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        Log::info("$user->name inició sesión");
+        $hora = $request['hora'];
+
+        Log::info("$user->name inició sesión. Hora de registro App $hora");
 
         return response()->json([
            'access_token' => $token,
