@@ -3,17 +3,12 @@ package com.example.prototipobeacons
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class UserRequest {
-
-    @SerializedName("email")
+class EventRequest {
+    @SerializedName("evento")
     @Expose
-    var email: String? = null
+    var evento: String? = null
 
-    @SerializedName("password")
-    @Expose
-    var password: String? = null
-
-    @SerializedName("hora")
+    @SerializedName ("hora")
     @Expose
     var hora: String? = null
 }

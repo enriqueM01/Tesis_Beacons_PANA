@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.prototipobeacons.LocalStorage
 import com.example.prototipobeacons.R
 import com.example.prototipobeacons.UserRequest
 import com.example.prototipobeacons.UserResponse
@@ -20,6 +21,9 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -29,14 +33,19 @@ class Login : AppCompatActivity() {
 
             when (response.code()) {
                 200 -> {
-                    Log.i(TAG, "access token: ${response.body()?.accessToken}")
+                    Log.i("[access token aaaa]", response.body()?.accessToken!!)
+                    LocalStorage.accessToken = response.body()?.accessToken!!
+
+
                     val intent = Intent(this@Login,RequestHelpActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
-                401 -> {
+                else -> {
                     Snackbar.make(binding.loginButton,"Credenciales inválidas", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show()
+                    binding.loginButton.isEnabled = true
+                    binding.loginButton.text = "iniciar sesión"
                 }
             }
         }
@@ -58,6 +67,9 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
+            val button = it as Button
+            button.isEnabled = false
+            button.text = "Cargando..."
             login()
         }
     }
@@ -69,6 +81,10 @@ class Login : AppCompatActivity() {
         val password1 = findViewById<EditText>(R.id.password_input)
         request.email = email1.text.toString().trim()
         request.password = password1.text.toString().trim()
+        request.hora = DateTimeFormatter
+            .ofPattern("yyyy-MM-dd HH:mm:ss")
+            .withZone(ZoneId.of("America/Caracas"))
+            .format(Instant.now())
 
         val retro = RetrofitClientInstance().getRetrofitClientInstance().create(Api::class.java)
         retro.login(request).enqueue(callback)
