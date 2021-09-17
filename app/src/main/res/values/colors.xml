@@ -10,4 +10,10 @@
     <color name="dark">#18171f</color>
     <color name="medium">#272630</color>
     <color name="alert">#F65151</color>
+    <color name="verdeClaro">#00E676</color>
+    <color name="verdecito">#66ffa6</color>
+    <color name="verdecin">#00b248</color>
+    <color name="verdito">#76ff03</color>
+    <color name="verdee">#b0ff57</color>
+    <color name="verdin">#32cb00</color>
 </resources>
